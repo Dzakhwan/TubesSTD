@@ -5,20 +5,16 @@ using namespace std;
 
 typedef struct Pelanggan *adrPelanggan;
 typedef struct Pesanan *adrPesanan;
-typedef struct MenuMakanan *adrMenuMakanan;
-typedef struct MenuMinuman *adrMenuMinuman;
-
-struct antrian
-{
-    adrPelanggan headPelanggan;
-    adrPelanggan tailPelanggan;
-};
+typedef struct Menu *adrMenu;
 
 struct Pesanan
 {
     string namaPesanan;
     int harga;
     adrPesanan nextPesanan;
+    adrMenu ListMenu; 
+    adrPesanan firstPesanan; 
+    adrPelanggan customer; 
 };
 
 struct Pelanggan
@@ -26,27 +22,15 @@ struct Pelanggan
     string nama;
     int totalHarga; 
     adrPelanggan nextPelanggan;
-    adrPesanan firstPesanan;
-};
-
-struct MenuMakanan
-{
-    string namaMenu;
-    int harga;
-    adrMenuMakanan nextMakanan;
-};
-
-struct MenuMinuman
-{
-    string namaMenu;
-    int harga;
-    adrMenuMinuman nextMinuman;
+    adrPelanggan prevPelanggan;
 };
 
 struct Menu
 {
-    adrMenuMakanan firstMakanan;
-    adrMenuMinuman firstMinuman;
+    string Nama;
+    int harga; 
+    adrMenu firstMenu;
+    adrMenu nextMenu; 
 };
 
 void createAntrian(antrian &Q);
